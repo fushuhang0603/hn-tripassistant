@@ -4,7 +4,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/springai-alibaba-graph/pom.xml" />
+        <option value="$PROJECT_DIR$/TripAssistant/pom.xml" />
+        <option value="$PROJECT_DIR$/HN-TripAssistant/pom.xml" />
       </list>
     </option>
   </component>
