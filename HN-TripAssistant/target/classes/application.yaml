@@ -1,0 +1,23 @@
+server:
+  port: 8009
+spring:
+  application:
+    name: TripAssistant
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: https://api.deepseek.com
+      api-key: ${DEEPSEEK_API_KEY}
+      chat:
+        options:
+          model: deepseek-v4-flash
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.248.128:3306/db_user?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: 20050603fsh..
+jwt:
+  secret: hainan-trip-jwt-secret-key-please-change-me-2026
+  expire-hours: 4
+

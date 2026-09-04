@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/UserBasicInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/AiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/GraphController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/domain/entiy/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/handler/LoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/SentencesNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/TranslationNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/utils/UserContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assistant.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/java/com/hanghang/springaialibabagraph/AlibabaGraphApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/java/com/hanghang/springaialibabagraph/config/GraphConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/test/java/com/hanghang/springaialibabagraph/AlibabaGraphApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/target/classes/application.yaml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;e055b6ff&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3IatGvOkg8fo0Vv5BRdVCDvV8Ml" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.HN-TripAssistant [clean].executor": "Run",
+    "Maven.HN-TripAssistant [package].executor": "Run",
+    "Maven.TripAssistant [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.TripAssistantApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Code/Assistant",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hanghang.tripassistant.common" />
+      <recent name="com.hanghang.tripassistant.handler" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="TripAssistantApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Assistant" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Assistant" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TripAssistantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="HN-TripAssistant" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hanghang.tripassistant.TripAssistantApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33514.17" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.33514.17" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="" />
+      <created>1788014420482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1788014420482</updated>
+      <workItem from="1788014422745" duration="6827000" />
+      <workItem from="1788064957229" duration="7551000" />
+      <workItem from="1788174207867" duration="2815000" />
+      <workItem from="1788239327408" duration="8121000" />
+      <workItem from="1788435771956" duration="132000" />
+      <workItem from="1788491224735" duration="3761000" />
+      <workItem from="1788514466364" duration="3185000" />
+      <workItem from="1788517748963" duration="60000" />
+      <workItem from="1788518366689" duration="1978000" />
+      <workItem from="1788520358916" duration="3073000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,150 @@
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 24px 184px 24px 24px;
+}
+
+/* 背景：海南海滩大图 + 蓝绿渐变遮罩 */
+.login-bg {
+  position: absolute;
+  /* 容器四周扩大 6%，把图片边缘（含 AI 水印）挤出可视区 */
+  inset: -6%;
+  background-image: url('https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=stunning%20tropical%20beach%20in%20Hainan%20China%20coconut%20palms%20crystal%20clear%20turquoise%20sea%20white%20sand%20golden%20afternoon%20sunlight%20aerial%20drone%20view%20vibrant%20photorealistic&image_size=landscape_16_9');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1);
+}
+
+.login-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(3, 56, 84, 0.72) 0%,
+    rgba(10, 122, 124, 0.55) 45%,
+    rgba(23, 175, 158, 0.42) 100%
+  );
+}
+
+/* 玻璃拟态卡片（正方形） */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 420px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 36px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 24px 64px rgba(2, 40, 60, 0.28),
+    0 2px 8px rgba(2, 40, 60, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+  animation: login-card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes login-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.login-logo {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 24px;
+  color: #fff;
+  background: linear-gradient(160deg, #1b6ca8 0%, #0e9f8a 100%);
+  box-shadow: 0 10px 24px rgba(14, 159, 138, 0.4);
+}
+
+.login-logo svg {
+  width: 26px;
+  height: 26px;
+}
+
+.login-title.ant-typography {
+  margin-bottom: 4px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(120deg, #0b5e7a 0%, #0e9f8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-subtitle.ant-typography {
+  display: block;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.login-form .ant-input-affix-wrapper {
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.login-form .ant-form-item {
+  margin-bottom: 12px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-submit {
+  border-radius: 10px;
+  height: 42px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  background: linear-gradient(120deg, #12b5a0 0%, #0e7fb0 100%);
+  border: none;
+  box-shadow: 0 8px 20px rgba(14, 159, 138, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(14, 159, 138, 0.45) !important;
+}
+
+.login-footer.ant-typography {
+  display: block;
+  margin-top: 14px;
+}
+
+/* 小屏适配：取消正方形，避免内容溢出 */
+@media (max-width: 640px) {
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-card {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+}
