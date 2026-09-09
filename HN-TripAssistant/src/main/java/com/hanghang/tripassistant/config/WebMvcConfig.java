@@ -1,6 +1,6 @@
 package com.hanghang.tripassistant.config;
 
-import com.hanghang.tripassistant.handler.LoginInterceptor;
+import com.hanghang.tripassistant.business.handler.LoginInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -20,9 +20,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(
-                        "/api/auth/login",   // 登录接口
-                        "/user/register",    // 注册接口（待实现）
-                        "/graph/**",         // 图编排演示接口（暂放行）
+                        "/api/user/login",
+                        "/api/user/register",
+                        "/graph/**",
                         // Swagger 文档放行
                         "/swagger-ui.html",
                         "/swagger-ui/**",

@@ -1,0 +1,540 @@
+/* ===== 攻略广场 · 薄荷绿 + 浅蓝 + 白色海岛风 ===== */
+.gs-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #2d3a3f;
+  overflow: hidden;
+}
+
+/* ---------- 顶部导航栏 ---------- */
+.gs-header {
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #eef2f5;
+  box-shadow: 0 2px 10px rgba(45, 58, 63, 0.04);
+  gap: 28px;
+  z-index: 10;
+}
+
+.gs-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.gs-logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #86ddbc 0%, #40b8e8 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.gs-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #2d3a3f;
+}
+
+.gs-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.gs-nav-item {
+  color: #5b6b72;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.gs-nav-item:hover {
+  color: #2d3a3f;
+  background: #f2f8f6;
+}
+
+.gs-nav-active {
+  color: #33b08a;
+  font-weight: 600;
+  background: #eaf8f2;
+}
+
+.gs-nav-arrow {
+  font-size: 11px;
+}
+
+.gs-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.gs-search {
+  width: 180px;
+  border-radius: 10px;
+  border-color: #e6edf0;
+  background: #f7fafb;
+}
+
+.gs-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+
+.gs-user-info:hover {
+  background: #f2f8f6;
+}
+
+.gs-avatar {
+  background: linear-gradient(135deg, #86ddbc 0%, #40b8e8 100%);
+}
+
+.gs-nickname {
+  font-size: 14px;
+  color: #2d3a3f;
+}
+
+/* ---------- 主体 ---------- */
+.gs-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ---------- 左侧侧边栏 ---------- */
+.gs-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid #eef2f5;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.gs-side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gs-side-item {
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #5b6b72;
+  cursor: pointer;
+  transition: 0.18s;
+}
+
+.gs-side-item:hover {
+  background: #f2f8f6;
+  color: #33b08a;
+}
+
+.gs-side-active {
+  background: #eaf8f2;
+  color: #33b08a;
+  font-weight: 600;
+}
+
+.gs-side-tip {
+  margin-top: auto;
+  padding: 16px 14px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #eaf8f2 0%, #e8f4fb 100%);
+  text-align: center;
+}
+
+.gs-tip-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.gs-tip-text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4a6b5f;
+}
+
+/* ---------- 右侧主内容 ---------- */
+.gs-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  background: #f7fafb;
+}
+
+/* Banner 轮播 */
+.gs-banner {
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(45, 58, 63, 0.1);
+}
+
+.gs-banner-slide {
+  position: relative;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+}
+
+.gs-banner-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 50, 60, 0.55) 0%, rgba(20, 50, 60, 0.1) 60%);
+}
+
+.gs-banner-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 48px;
+  max-width: 520px;
+}
+
+.gs-banner-title {
+  margin: 0 0 12px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.gs-banner-sub {
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.gs-banner-btn {
+  width: 150px;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  background: #fff;
+  color: #2bbd8f;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.22s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.gs-banner-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+/* 内容两栏 */
+.gs-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 22px;
+  align-items: start;
+}
+
+.gs-section-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3a3f;
+}
+
+/* 瀑布流 */
+.gs-waterfall {
+  column-count: 2;
+  column-gap: 16px;
+}
+
+.gs-card {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(45, 58, 63, 0.06);
+  transition: 0.22s ease;
+}
+
+.gs-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(45, 58, 63, 0.12);
+}
+
+.gs-card-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #eef2f5;
+}
+
+.gs-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gs-card:hover .gs-card-cover img {
+  transform: scale(1.06);
+}
+
+.gs-card-body {
+  padding: 14px 16px 16px;
+}
+
+.gs-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.gs-tag {
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: #eef6fb;
+  color: #40b8e8;
+  font-size: 12px;
+}
+
+.gs-tag-city {
+  background: #eaf8f2;
+  color: #33b08a;
+  font-weight: 600;
+}
+
+.gs-card-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #2d3a3f;
+}
+
+.gs-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gs-card-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-card-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #86ddbc 0%, #40b8e8 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gs-card-author-name {
+  font-size: 13px;
+  color: #8a9aa0;
+}
+
+.gs-like {
+  border: none;
+  background: transparent;
+  color: #8a9aa0;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.2s;
+}
+
+.gs-like:hover {
+  color: #f4718a;
+}
+
+.gs-liked {
+  color: #f4718a;
+}
+
+/* 右侧热门路线 */
+.gs-hot {
+  position: sticky;
+  top: 0;
+}
+
+.gs-hot-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(45, 58, 63, 0.06);
+  margin-bottom: 16px;
+}
+
+.gs-hot-title {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d3a3f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-hot-fire {
+  color: #ff9f43;
+}
+
+.gs-hot-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gs-hot-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gs-hot-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.gs-hot-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gs-hot-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3a3f;
+}
+
+.gs-hot-desc {
+  font-size: 12px;
+  color: #8a9aa0;
+  margin-top: 2px;
+}
+
+.gs-hot-btn {
+  margin-top: 16px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d9eee6;
+  border-radius: 12px;
+  background: #f4fbf8;
+  color: #33b08a;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gs-hot-btn:hover {
+  background: #eaf8f2;
+}
+
+.gs-hot-tip {
+  background: linear-gradient(160deg, #e8f4fb 0%, #eaf8f2 100%);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gs-hot-tip-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.gs-hot-tip-text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4a6b5f;
+}
+
+/* 滚动条 */
+.gs-main::-webkit-scrollbar,
+.gs-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.gs-main::-webkit-scrollbar-thumb,
+.gs-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(45, 58, 63, 0.16);
+  border-radius: 3px;
+}
+
+.gs-main::-webkit-scrollbar-thumb:hover,
+.gs-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 58, 63, 0.26);
+}

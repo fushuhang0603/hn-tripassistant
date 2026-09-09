@@ -4,13 +4,9 @@ import com.alibaba.cloud.ai.graph.KeyStrategy;
 import com.alibaba.cloud.ai.graph.KeyStrategyFactory;
 import com.alibaba.cloud.ai.graph.StateGraph;
 import com.alibaba.cloud.ai.graph.action.AsyncNodeAction;
-import com.alibaba.cloud.ai.graph.action.AsyncNodeActionWithConfig;
 import com.alibaba.cloud.ai.graph.exception.GraphStateException;
-import com.alibaba.cloud.ai.graph.state.strategy.AppendStrategy;
-import com.alibaba.cloud.ai.graph.state.strategy.MergeStrategy;
 import com.alibaba.cloud.ai.graph.state.strategy.ReplaceStrategy;
-import com.hanghang.tripassistant.node.SentencesNode;
-import com.hanghang.tripassistant.node.TranslationNode;
+import com.hanghang.tripassistant.agent.graph.node.ExtractParamNode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -54,31 +50,5 @@ public class GraphConfig {
 
         //编译图
         return stateGraph.compile();
-    }
-
-    @Bean("SentenceGraph")
-    public CompiledGraph SentenceGraph(SentencesNode sentencesNode,TranslationNode translationNode) throws GraphStateException {
-        //创建keyStrategy 策略工厂
-        KeyStrategyFactory keyStrategyFactory = new KeyStrategyFactory() {
-            @Override
-            public Map<String, KeyStrategy> apply() {
-                return Map.of("word", new ReplaceStrategy());
-            }
-        };
-
-        //创建状态图
-        StateGraph graph = new StateGraph("SentenceGraph",keyStrategyFactory);
-        graph.addNode("SentencesNode",
-                AsyncNodeAction.node_async(sentencesNode));
-        graph.addNode("TranslationNode",
-                AsyncNodeAction.node_async(translationNode));
-
-        //设置变
-        graph.addEdge(START,"SentencesNode");
-        graph.addEdge("SentencesNode", "TranslationNode");
-        graph.addEdge("TranslationNode", END);
-
-        //编译图
-        return graph.compile();
     }
 }

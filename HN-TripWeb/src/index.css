@@ -9,6 +9,23 @@
     Arial,
     sans-serif;
   color-scheme: light;
+
+  /* 科技白色未来感设计令牌 */
+  --bg: #f5f7fb;
+  --bg-deep: #eef2f9;
+  --card: #ffffff;
+  --card-soft: rgba(255, 255, 255, 0.7);
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --primary: #2563eb;
+  --primary-2: #06b6d4;
+  --primary-soft: rgba(37, 99, 235, 0.08);
+  --gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 24px 60px rgba(37, 99, 235, 0.16);
 }
 
 * {
@@ -18,4 +35,6 @@
 body {
   margin: 0;
   padding: 0;
+  background: var(--bg);
+  color: var(--text);
 }

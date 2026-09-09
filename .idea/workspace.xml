@@ -4,35 +4,85 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/UserBasicInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/AiConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/GraphController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/domain/entiy/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/handler/LoginInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/SentencesNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/TranslationNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/utils/UserContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assistant.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/java/com/hanghang/springaialibabagraph/AlibabaGraphApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/java/com/hanghang/springaialibabagraph/config/GraphConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/src/test/java/com/hanghang/springaialibabagraph/AlibabaGraphApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springai-alibaba-graph/target/classes/application.yaml" beforeDir="false" />
+    <list default="true" id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="前端">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/graph/node/ExtractParamNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/graph/state/ExtractParamState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/HandlerRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/HandlerResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/IntentHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/intent/IntentResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/intent/IntentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/common/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/domain/dto/LoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/domain/dto/RegisterDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/domain/vo/LoginVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/domain/vo/UserInfoVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/ChatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/GaoDeMapMcpService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/ChatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/GaoDeMapMcpServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/gaode-mcp-server.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/common/BusinessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/common/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/common/UserBasicInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/common/UserBasicInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/GraphController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/domain/entiy/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/domain/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/handler/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/handler/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/SentencesNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/node/TranslationNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/utils/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/utils/UserContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/business/utils/UserContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/test/java/com/hanghang/tripassistant/TripAssistantApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/test/java/com/hanghang/tripassistant/TripAssistantApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/TripAssistantApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/common/BusinessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/common/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/common/UserBasicInfo$UserBasicInfoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/common/UserBasicInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/AiConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/WebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/controller/GraphController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/domain/entiy/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/domain/entiy/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/handler/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/handler/LoginInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/node/SentencesNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/node/TranslationNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/utils/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/utils/UserContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/test-classes/com/hanghang/tripassistant/TripAssistantApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/pages/LoginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/pages/LoginPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/pages/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/pages/LoginPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripWeb/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +92,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -55,34 +106,48 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="3IatGvOkg8fo0Vv5BRdVCDvV8Ml" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.HN-TripAssistant [clean].executor": "Run",
-    "Maven.HN-TripAssistant [package].executor": "Run",
-    "Maven.TripAssistant [clean].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.TripAssistantApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Code/Assistant",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TripAssistantApplicationTests.testListMcpTools.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TripAssistantApplicationTests.testWeather.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.HN-TripAssistant [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.HN-TripAssistant [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.TripAssistant [clean].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TripAssistantApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Assistant/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/graph/plan&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Assistant\HN-TripAssistant\src\main\java\com\hanghang\tripassistant\graph\plan" />
+      <recent name="D:\Code\Assistant\HN-TripAssistant\src\main\java\com\hanghang\tripassistant\Business" />
+      <recent name="D:\Code\Assistant\HN-TripAssistant\src\main\java\com\hanghang\tripassistant\Graph" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hanghang.tripassistant.agent.intent" />
+      <recent name="com.hanghang.tripassistant.service.impl" />
+      <recent name="com.hanghang.tripassistant.graph.state" />
       <recent name="com.hanghang.tripassistant.common" />
       <recent name="com.hanghang.tripassistant.handler" />
     </key>
@@ -105,7 +170,39 @@
       </map>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TripAssistantApplicationTests.testWeather">
+    <configuration name="TripAssistantApplicationTests.testListMcpTools" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HN-TripAssistant" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanghang.tripassistant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanghang.tripassistant" />
+      <option name="MAIN_CLASS_NAME" value="com.hanghang.tripassistant.TripAssistantApplicationTests" />
+      <option name="METHOD_NAME" value="testListMcpTools" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TripAssistantApplicationTests.testWeather" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HN-TripAssistant" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanghang.tripassistant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hanghang.tripassistant" />
+      <option name="MAIN_CLASS_NAME" value="com.hanghang.tripassistant.TripAssistantApplicationTests" />
+      <option name="METHOD_NAME" value="testWeather" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Assistant" />
       <method v="2">
@@ -117,13 +214,26 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <configuration name="TripAssistantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="TripAssistantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="HN-TripAssistant" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hanghang.tripassistant.TripAssistantApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hanghang.tripassistant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.TripAssistantApplication" />
+        <item itemvalue="JUnit.TripAssistantApplicationTests.testWeather" />
+        <item itemvalue="JUnit.TripAssistantApplicationTests.testListMcpTools" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -149,8 +259,31 @@
       <workItem from="1788514466364" duration="3185000" />
       <workItem from="1788517748963" duration="60000" />
       <workItem from="1788518366689" duration="1978000" />
-      <workItem from="1788520358916" duration="3073000" />
+      <workItem from="1788520358916" duration="9902000" />
+      <workItem from="1788680943163" duration="1154000" />
+      <workItem from="1788716119041" duration="6923000" />
+      <workItem from="1788763641658" duration="15715000" />
+      <workItem from="1788849377037" duration="8660000" />
+      <workItem from="1788873521979" duration="2115000" />
+      <workItem from="1788939255128" duration="11030000" />
     </task>
+    <task id="LOCAL-00001" summary="补全用户登录逻辑">
+      <option name="closed" value="true" />
+      <created>1788523463747</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1788523463747</updated>
+    </task>
+    <task id="LOCAL-00002" summary="前端">
+      <option name="closed" value="true" />
+      <created>1788523496802</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1788523496802</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,5 +299,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="补全用户登录逻辑" />
+    <MESSAGE value="前端" />
+    <option name="LAST_COMMIT_MESSAGE" value="前端" />
   </component>
 </project>

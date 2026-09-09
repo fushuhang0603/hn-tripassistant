@@ -11,9 +11,11 @@ createRoot(document.getElementById('root')!).render(
     <ConfigProvider
       locale={zhCN}
       theme={{
-        // 海南热带主题色：海洋蓝绿
+        // 科技白色未来感主题色：科技蓝
         token: {
-          colorPrimary: '#0e9f8a',
+          colorPrimary: '#2563eb',
+          colorInfo: '#2563eb',
+          borderRadius: 10,
         },
       }}
     >

@@ -1,0 +1,520 @@
+.home-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+}
+
+/* 左侧边栏：白色玻璃拟态 */
+.sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--border);
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.section-title {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.sidebar-heading {
+  color: var(--text);
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 目的地卡片 */
+.spot-item {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.spot-item:hover {
+  border-color: rgba(37, 99, 235, 0.28);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.spot-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.spot-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.quick-question {
+  margin-top: 32px;
+}
+
+.quick-btn {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  transition: 0.22s;
+}
+
+.quick-btn:hover {
+  background: var(--primary-soft);
+  border-color: rgba(37, 99, 235, 0.24);
+  color: var(--primary);
+}
+
+/* 聊天主区域 */
+.chat-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  min-width: 0;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 28px 32px;
+  overflow-y: auto;
+}
+
+.msg-item {
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.msg-user {
+  justify-content: flex-end;
+}
+
+.msg-ai {
+  justify-content: flex-start;
+}
+
+.msg-bubble {
+  max-width: 68%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg-user .msg-bubble {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.msg-ai .msg-bubble {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+/* AI 回复中的 Markdown 内容 */
+.msg-ai .msg-bubble p {
+  margin: 0 0 10px;
+}
+.msg-ai .msg-bubble p:last-child {
+  margin-bottom: 0;
+}
+.msg-ai .msg-bubble h1,
+.msg-ai .msg-bubble h2,
+.msg-ai .msg-bubble h3,
+.msg-ai .msg-bubble h4 {
+  margin: 14px 0 8px;
+  line-height: 1.4;
+  color: var(--text);
+}
+.msg-ai .msg-bubble ul,
+.msg-ai .msg-bubble ol {
+  margin: 6px 0 10px;
+  padding-left: 22px;
+}
+.msg-ai .msg-bubble li {
+  margin: 3px 0;
+}
+.msg-ai .msg-bubble a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.msg-ai .msg-bubble code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 13px;
+}
+.msg-ai .msg-bubble pre {
+  margin: 8px 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+.msg-ai .msg-bubble pre code {
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+}
+.msg-ai .msg-bubble blockquote {
+  margin: 8px 0;
+  padding: 2px 12px;
+  border-left: 3px solid var(--primary);
+  color: var(--text-secondary);
+}
+.msg-ai .msg-bubble table {
+  margin: 8px 0;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.msg-ai .msg-bubble th,
+.msg-ai .msg-bubble td {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.msg-ai .msg-bubble th {
+  background: #f1f5f9;
+  color: var(--text);
+}
+
+.msg-bubble-loading {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 底部输入栏 */
+.input-area {
+  padding: 20px 32px;
+  background: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+#inputText {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+  font-family: inherit;
+  resize: none;
+  min-height: 48px;
+  max-height: 140px;
+  line-height: 1.5;
+}
+
+#inputText:focus {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#inputText::placeholder {
+  color: var(--text-muted);
+}
+
+#sendBtn {
+  width: 100px;
+  height: 48px;
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.22s;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+}
+
+#sendBtn:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.36);
+}
+
+#sendBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 滚动条 */
+.sidebar::-webkit-scrollbar,
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.chat-box::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.14);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.24);
+}
+
+/* ===== 行程结构化卡片 ===== */
+.msg-item--plan {
+  width: 100%;
+}
+
+.trip-card {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+.trip-card__title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.trip-card__summary {
+  margin: 0 0 18px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.trip-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.trip-icon--blue { background: #eef4ff; color: #2563eb; }
+.trip-icon--cyan { background: #e0f7fb; color: #06b6d4; }
+.trip-icon--orange { background: #fef3e2; color: #f59e0b; }
+.trip-icon--green { background: #e6f6ee; color: #10b981; }
+.trip-icon--purple { background: #f1ecfe; color: #8b5cf6; }
+.trip-icon--gold { background: #fef3c7; color: #d97706; }
+
+.trip-card__budget {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+/* 每天分区：分隔线扁平布局 */
+.trip-day {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+
+.trip-day__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.trip-day__index {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.trip-day__theme {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.trip-section {
+  margin-bottom: 20px;
+}
+
+.trip-section:last-child {
+  margin-bottom: 0;
+}
+
+.trip-section__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* 景点网格 */
+.trip-spots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.trip-spot {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  transition: 0.2s ease;
+}
+
+.trip-spot:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.trip-spot__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.trip-spot__num {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trip-spot__meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.trip-spot__meta--addr {
+  margin-top: 4px;
+}
+
+.trip-spot__intro {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* 活动 / 餐饮列表：分隔线 */
+.trip-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trip-list li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.trip-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.trip-list__name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trip-list__desc {
+  color: var(--text-secondary);
+  margin-left: 8px;
+}
+
+.trip-list__desc--addr {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* 交通 / 住宿 说明 */
+.trip-note {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
