@@ -96,7 +96,7 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public Flux<StreamEvent> chatStream(ChatRequest request) {
-        // 1. 会话加载（同非流式）
+        // 1. 会话加载
         String sessionId = resolveSessionId(request);
         ChatContext context = sessionManager.loadOrCreate(sessionId, UserContext.get());
         context.setMessage(request.getMessage());
