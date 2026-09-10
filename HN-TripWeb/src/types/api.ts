@@ -32,6 +32,36 @@ export interface RegisterParams {
   confirmPassword: string
 }
 
+// ===== 统一聊天接口（/api/chat/send） =====
+
+// 聊天请求（首次 sessionId 为空，后端创建后随响应返回，后续轮次原样带回）
+export interface ChatRequest {
+  sessionId?: string
+  message: string
+}
+
+// 聊天响应（非流式版本，兼容保留）
+export interface ChatResponse {
+  sessionId: string
+  intent: string
+  reply: string
+  askMessage: string
+  complete: boolean
+  data: unknown
+}
+
+// SSE 流式事件（/api/chat/send/stream）
+// meta：会话元信息 / token：文本增量 / ask：追问 / error：错误兜底 / end：结束+结构化数据
+export interface StreamEvent {
+  type: 'meta' | 'token' | 'ask' | 'error' | 'end'
+  sessionId?: string
+  intent?: string
+  content?: string
+  reply?: string
+  askMessage?: string
+  data?: unknown
+}
+
 // ===== AI 行程规划（对齐后端 graph.plan 模型） =====
 
 // 活动
@@ -87,3 +117,5 @@ export interface PlanTripAsk {
 
 // /graph/planTrip 返回：追问 或 完整行程
 export type PlanTripResult = PlanTripAsk | TripPlan
+
+

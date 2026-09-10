@@ -11,8 +11,8 @@ import {
 } from '@ant-design/icons'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { get } from '../lib/request'
-import type { PlanTripResult, TripPlan } from '../types/api'
+import { postStream } from '../lib/request'
+import type { StreamEvent, TripPlan } from '../types/api'
 import './HomePage.css'
 
 interface ChatMessage {
@@ -42,6 +42,13 @@ const quickCommands = [
   '自驾路线注意事项',
   '预算三千怎么玩海南',
 ]
+
+function extractTripPlan(data: unknown): TripPlan | null {
+  if (data && typeof data === 'object' && 'days' in data && Array.isArray((data as TripPlan).days)) {
+    return data as TripPlan
+  }
+  return null
+}
 
 function TripPlanCard({ plan }: { plan: TripPlan }) {
   const days = plan.days ?? []
@@ -182,6 +189,7 @@ function HomePage() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const listRef = useRef<HTMLDivElement>(null)
+  const sessionIdRef = useRef('')
 
   useEffect(() => {
     const el = listRef.current
@@ -195,32 +203,61 @@ function HomePage() {
     if (!text || loading) return
 
     setInput('')
-    setMessages((prev) => [...prev, { id: Date.now(), role: 'user', content: text }])
+    // 先压入用户消息 + 一条空白的 assistant 占位消息，token 事件增量填充
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now(), role: 'user', content: text },
+      { id: Date.now() + 1, role: 'assistant', content: '' },
+    ])
     setLoading(true)
 
+    // 改写最后一条 assistant 消息的 content
+    const patchAssistant = (patch: (content: string) => string) => {
+      setMessages((prev) => {
+        const last = prev[prev.length - 1]
+        if (!last || last.role !== 'assistant') return prev
+        return [...prev.slice(0, -1), { ...last, content: patch(last.content) }]
+      })
+    }
+
     try {
-      const data = await get<PlanTripResult>(`/graph/planTrip?question=${encodeURIComponent(text)}`)
-      if ('complete' in data && data.complete === false) {
-        const content = data.askMessage || '请补充出行信息后再试'
-        setMessages((prev) => [...prev, { id: Date.now() + 1, role: 'assistant', content }])
-      } else {
-        const tripPlan = data as TripPlan
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: Date.now() + 1,
-            role: 'assistant',
-            content: tripPlan.title || '行程规划',
-            tripPlan,
-          },
-        ])
-      }
+      await postStream(
+        '/api/chat/send/stream',
+        { sessionId: sessionIdRef.current || '', message: text },
+        (event: StreamEvent) => {
+          switch (event.type) {
+            case 'meta':
+              if (event.sessionId) {
+                sessionIdRef.current = event.sessionId
+              }
+              break
+            case 'token':
+              patchAssistant((content) => content + (event.content ?? ''))
+              break
+            case 'ask':
+              patchAssistant(() => event.askMessage || event.reply || '请补充信息后再试')
+              break
+            case 'error':
+              patchAssistant(() => event.content || '出错了，请稍后重试')
+              break
+            case 'end': {
+              // 结构化数据：行程规划类则挂 tripPlan 卡片
+              const tripPlan = extractTripPlan(event.data)
+              if (tripPlan) {
+                setMessages((prev) => {
+                  const last = prev[prev.length - 1]
+                  if (!last || last.role !== 'assistant') return prev
+                  return [...prev.slice(0, -1), { ...last, tripPlan }]
+                })
+              }
+              break
+            }
+          }
+        },
+      )
     } catch {
       message.error('网络错误，请稍后重试')
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now() + 1, role: 'assistant', content: '网络异常，请稍后重试' },
-      ])
+      patchAssistant((content) => content || '网络异常，请稍后重试')
     } finally {
       setLoading(false)
     }
@@ -280,7 +317,7 @@ function HomePage() {
               </div>
             )
           })}
-          {loading && (
+          {loading && !messages[messages.length - 1]?.content && (
             <div className="msg-item msg-ai">
               <div className="msg-bubble msg-bubble-loading">正在思考中…</div>
             </div>

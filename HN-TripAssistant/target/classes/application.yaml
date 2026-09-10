@@ -1,0 +1,33 @@
+server:
+  port: 8009
+spring:
+  application:
+    name: TripAssistant
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: https://api.deepseek.com
+      api-key: ${DEEPSEEK_API_KEY}
+      chat:
+        options:
+          model: deepseek-v4-flash
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:/gaode-mcp-server.json # 指定 MCP 服务的配置文件路径
+        toolcallback:
+          enabled: true # 开启 MCP 客户端的工具回调（Tool Callback）功能
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.248.128:3306/hainan_trip?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: 20050603fsh..
+jwt:
+  secret: hainan-trip-jwt-secret-key-please-change-me-2026
+  expire-hours: 4
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

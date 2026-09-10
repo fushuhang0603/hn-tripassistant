@@ -8,11 +8,13 @@ import com.hanghang.tripassistant.agent.recognizer.IntentRecognizer;
 import com.hanghang.tripassistant.agent.request.ChatContext;
 import com.hanghang.tripassistant.agent.request.ChatRequest;
 import com.hanghang.tripassistant.agent.request.ChatResponse;
+import com.hanghang.tripassistant.agent.request.StreamEvent;
 import com.hanghang.tripassistant.business.utils.UserContext;
 import com.hanghang.tripassistant.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import reactor.core.publisher.Flux;
 
 import java.util.UUID;
 
@@ -64,5 +66,28 @@ public class ChatServiceImpl implements ChatService {
         response.setComplete(result.isComplete());
         response.setData(result.getData());
         return response;
+    }
+
+    @Override
+    public Flux<StreamEvent> chatStream(ChatRequest request) {
+        // 1. 会话ID：Redis 未接入前临时生成；第 2 步由 SessionManager 接管（逻辑位置不变）
+        String sessionId = StringUtils.hasText(request.getSessionId())
+                ? request.getSessionId()
+                : UUID.randomUUID().toString().replace("-", "");
+
+        // 2. 构建上下文
+        ChatContext context = new ChatContext();
+        context.setSessionId(sessionId);
+        context.setUser(UserContext.get());
+        context.setMessage(request.getMessage());
+
+        // 3. 意图识别：规则短路 → LLM 分类 → 低置信度降级 GENERAL
+        IntentResult intentResult = intentRecognizer.recognize(request.getMessage(), context);
+        context.setIntentResult(intentResult);
+
+        // 4. 分发：先发 meta 事件（含 sessionId，前端持久化带回），再订阅 Handler 事件流
+        IntentHandler handler = handlerRegistry.dispatch(intentResult.getIntent());
+        StreamEvent meta = StreamEvent.meta(sessionId, handler.support().name());
+        return Flux.concat(Flux.just(meta), handler.handleStream(context));
     }
 }
