@@ -56,7 +56,7 @@ public class IntentRuleEngine {
                     List.of()),
             new IntentRule(IntentType.GENERAL, 0.9,
                     List.of("算了", "不用了", "取消"),
-                    List.of()));
+                    List.of(), true));
 
     /**
      * 规则匹配：未命中返回 null，由调用方进入 LLM 段。
@@ -81,6 +81,7 @@ public class IntentRuleEngine {
         result.setConfidence(rule.confidence());
         result.setSource(IntentResult.Source.RULE);
         result.setSlots(extractSlots(message));
+        result.setCancel(rule.cancel());
         return result;
     }
 
@@ -113,8 +114,12 @@ public class IntentRuleEngine {
         return raw.replace("年", "-").replace("月", "-").replace("/", "-").replace("日", "");
     }
 
-    /** 一条规则：意图 + 命中置信度 + 关键词组 + 正则组 */
+    /** 一条规则：意图 + 命中置信度 + 关键词组 + 正则组 + 是否取消语义 */
     private record IntentRule(IntentType intent, double confidence, List<String> keywords,
-                              List<Pattern> patterns) {
+                              List<Pattern> patterns, boolean cancel) {
+        /** 普通规则：无取消语义 */
+        IntentRule(IntentType intent, double confidence, List<String> keywords, List<Pattern> patterns) {
+            this(intent, confidence, keywords, patterns, false);
+        }
     }
 }

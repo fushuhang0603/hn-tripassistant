@@ -23,6 +23,14 @@ spring:
       url: jdbc:mysql://192.168.248.128:3306/hainan_trip?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
       username: root
       password: 20050603fsh..
+  data:
+    redis:
+      host: 192.168.248.128
+      port: 16379
+      password: 20050603fsh..
+      database: 0
+      timeout: 5000ms
+      connect-timeout: 5000ms
 jwt:
   secret: hainan-trip-jwt-secret-key-please-change-me-2026
   expire-hours: 4

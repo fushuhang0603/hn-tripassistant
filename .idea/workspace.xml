@@ -6,17 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="添加意图识别">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/IntentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/IntentHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/config/GraphConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/intent/IntentResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/intent/IntentResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/ChatServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/lib/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/lib/request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/pages/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/pages/HomePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HN-TripWeb/src/types/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripWeb/src/types/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planTrip_full.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/planTrip_result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult$Source.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult$Source.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine$IntentRule.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine$IntentRule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/ChatContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/ChatContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/ChatServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/ChatServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +209,7 @@
       <workItem from="1788849377037" duration="8660000" />
       <workItem from="1788873521979" duration="2115000" />
       <workItem from="1788939255128" duration="18315000" />
-      <workItem from="1789022690926" duration="2304000" />
+      <workItem from="1789022690926" duration="7109000" />
     </task>
     <task id="LOCAL-00001" summary="补全用户登录逻辑">
       <option name="closed" value="true" />
@@ -230,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788964675355</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加意图识别">
+      <option name="closed" value="true" />
+      <created>1789027253077</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789027253077</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

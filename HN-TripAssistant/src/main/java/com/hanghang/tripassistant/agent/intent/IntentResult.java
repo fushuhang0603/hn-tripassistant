@@ -23,6 +23,9 @@ public class IntentResult {
     @Schema(description = "识别来源：RULE=规则短路，LLM=模型分类")
     private Source source;
 
+    @Schema(description = "取消语义：规则段命中「算了/取消」等时打标，主链路据此清空会话")
+    private boolean cancel;
+
     /**
      * 识别来源标记，便于日志排查与规则命中率统计
      */
