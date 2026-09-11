@@ -2,7 +2,6 @@ package com.hanghang.tripassistant.agent.handler.impl;
 
 import com.hanghang.tripassistant.agent.context.ChatMessage;
 import com.hanghang.tripassistant.agent.context.MessageRole;
-import com.hanghang.tripassistant.agent.handler.HandlerResult;
 import com.hanghang.tripassistant.agent.handler.IntentHandler;
 import com.hanghang.tripassistant.agent.intent.IntentType;
 import com.hanghang.tripassistant.agent.request.ChatContext;
@@ -31,20 +30,6 @@ public class GeneralHandler implements IntentHandler {
     @Override
     public IntentType support() {
         return IntentType.GENERAL;
-    }
-
-    @Override
-    public HandlerResult handle(ChatContext context) {
-        String reply = chatClient.prompt()
-                .system(SYSTEM_PROMPT)
-                .user(buildUserPrompt(context))
-                .call()
-                .content();
-
-        HandlerResult result = new HandlerResult();
-        result.setReply(reply);
-        result.setComplete(true);
-        return result;
     }
 
     @Override

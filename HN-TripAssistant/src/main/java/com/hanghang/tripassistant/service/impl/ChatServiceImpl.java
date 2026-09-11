@@ -10,7 +10,6 @@ import com.hanghang.tripassistant.agent.intent.IntentType;
 import com.hanghang.tripassistant.agent.recognizer.IntentRecognizer;
 import com.hanghang.tripassistant.agent.request.ChatContext;
 import com.hanghang.tripassistant.agent.request.ChatRequest;
-import com.hanghang.tripassistant.agent.request.ChatResponse;
 import com.hanghang.tripassistant.agent.request.StreamEvent;
 import com.hanghang.tripassistant.business.utils.UserContext;
 import com.hanghang.tripassistant.service.ChatService;
@@ -46,53 +45,6 @@ public class ChatServiceImpl implements ChatService {
      */
     @Autowired
     private SessionManager sessionManager;
-
-    @Override
-    public ChatResponse chat(ChatRequest request) {
-        // 1. 会话加载：Redis 快照 → phase/原意图/槽位/历史；新会话由 SessionManager 兜底
-        String sessionId = resolveSessionId(request);
-        ChatContext context = sessionManager.loadOrCreate(sessionId, UserContext.get());
-        context.setMessage(request.getMessage());
-
-        // 2. 意图识别：规则短路 → LLM 分类 → 低置信度降级 GENERAL
-        IntentResult intentResult = intentRecognizer.recognize(request.getMessage(), context);
-        context.setIntentResult(intentResult);
-
-        // 3. 取消语义：清空会话快照，友好回复
-        if (intentResult.isCancel()) {
-            sessionManager.cancel(sessionId);
-            ChatResponse response = baseResponse(sessionId);
-            response.setIntent(IntentType.GENERAL);
-            response.setReply("好的，已帮你取消～还有什么想聊的，随时找小岛民～");
-            response.setComplete(true);
-            return response;
-        }
-
-        // 4. 追问态回退：COLLECTING 阶段用户回答追问（识别为 GENERAL）时，沿用快照原意图
-        resolveCollectingIntent(context);
-
-        // 5. 槽位合并：历史快照 + 本轮提取，新值覆盖、null 不覆盖
-        Map<String, Object> mergedSlots = sessionManager.mergeSlots(context.getExtractParam(), intentResult.getSlots());
-        intentResult.setSlots(mergedSlots);
-        context.setExtractParam(mergedSlots);
-
-        // 6. 分发执行
-        IntentHandler handler = handlerRegistry.dispatch(intentResult.getIntent());
-        HandlerResult result = handler.handle(context);
-
-        // 7. 会话保存：快照 + 消息历史（内部兜底，Redis 故障不影响主链路）
-        sessionManager.save(context, result);
-
-        // 8. 组装统一响应
-        ChatResponse response = baseResponse(sessionId);
-        // 返回实际执行的意图：识别意图无对应 Handler 降级时，前端看到真实兜底结果
-        response.setIntent(handler.support());
-        response.setReply(result.getReply());
-        response.setAskMessage(result.getAskMessage());
-        response.setComplete(result.isComplete());
-        response.setData(result.getData());
-        return response;
-    }
 
     @Override
     public Flux<StreamEvent> chatStream(ChatRequest request) {
@@ -165,11 +117,5 @@ public class ChatServiceImpl implements ChatService {
         result.setAskMessage(askMessage);
         result.setComplete(true);
         sessionManager.save(context, result);
-    }
-
-    private ChatResponse baseResponse(String sessionId) {
-        ChatResponse response = new ChatResponse();
-        response.setSessionId(sessionId);
-        return response;
     }
 }

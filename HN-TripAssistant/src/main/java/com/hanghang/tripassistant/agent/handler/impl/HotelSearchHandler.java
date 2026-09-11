@@ -9,26 +9,27 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * 天气查询 Handler：三步模式样板（取槽位 → 调工具 → LLM 整理）。
- * 后续 POI / Hotel / Transport 等查询类 Handler 照此结构复制。
+ * 住宿查询 Handler：三步模式（取槽位 → 调工具 → LLM 整理）。
+ * 城市必填；关键词（如海景/亲子）可选，缺省按"酒店"搜索。
  */
 @Slf4j
 @Component
-public class WeatherHandler implements IntentHandler {
+public class HotelSearchHandler implements IntentHandler {
 
-    /** 整理高德天气 JSON 的人设 prompt */
+    /** 整理高德住宿搜索 JSON 的人设 prompt */
     private static final String FORMAT_PROMPT = """
             你是"小岛民"，海南深度游 AI 助手。
-            下面是高德天气接口返回的 JSON，请整理成简洁口语化的天气播报：
-            - 讲清城市、日期、天气现象、气温、风力、湿度
-            - 适当给穿衣/出行小建议，语气热情亲切
-            - JSON 里没有的数据不要编造
+            下面是高德关键词搜索返回的住宿类 JSON，请整理成简洁的推荐清单：
+            - 挑出 3-5 个合适的住宿，讲清名称、位置、特色
+            - 结合用户补充的关键词（如海景、亲子、平价）做针对性推荐
+            - 语气热情亲切；JSON 里没有的数据不要编造（价格、星级没有就不提）
             """;
 
     @Autowired
@@ -38,31 +39,31 @@ public class WeatherHandler implements IntentHandler {
 
     @Override
     public IntentType support() {
-        return IntentType.WEATHER;
+        return IntentType.HOTEL_SEARCH;
     }
 
     @Override
     public Flux<StreamEvent> handleStream(ChatContext context) {
         // defer：订阅时才执行同步的取槽位/调工具，避免请求线程提前阻塞
         return Flux.defer(() -> {
-            // 取槽位：城市（识别器规则段/LLM 段都会提取 cities）
-            String city = firstCity(context.getIntentResult().getSlots());
-            if (city == null) {
+            Map<String, Object> slots = context.getIntentResult().getSlots();
+            String city = firstCity(slots);
+            if (!StringUtils.hasText(city)) {
                 return Flux.just(StreamEvent.ask(
-                        "想查天气的话，告诉小岛民是哪个城市呀（比如海口、三亚）～",
-                        "请问您想查哪个城市的天气？"));
+                        "想订住宿的话，告诉小岛民在哪个城市呀（比如三亚、海口）～",
+                        "请问您想在哪个城市找住宿？"));
             }
+            String keyword = firstKeyword(slots);
+            String searchKeyword = StringUtils.hasText(keyword) ? keyword + " 住宿" : "酒店";
 
-            // 调工具：高德天气，返回原始 JSON
             String rawJson;
             try {
-                rawJson = gaoDeMapMcpService.weather(city);
+                rawJson = gaoDeMapMcpService.textSearch(searchKeyword, city);
             } catch (Exception e) {
-                log.error("天气查询失败 city={}：{}", city, e.getMessage());
-                return Flux.just(StreamEvent.error("天气服务开小差了，稍后再试试～"));
+                log.error("住宿搜索失败 keyword={} city={}：{}", searchKeyword, city, e.getMessage());
+                return Flux.just(StreamEvent.error("住宿服务开小差了，稍后再试试～"));
             }
 
-            // LLM 流式整理；整理失败回退固定文案，不让用户看到 JSON
             return chatClient.prompt()
                     .system(FORMAT_PROMPT)
                     .user(rawJson)
@@ -71,14 +72,22 @@ public class WeatherHandler implements IntentHandler {
                     .map(StreamEvent::token)
                     .concatWith(Flux.just(StreamEvent.end(rawJson)))
                     .onErrorResume(e -> {
-                        log.error("天气文案整理失败 city={}：{}", city, e.getMessage());
+                        log.error("住宿文案整理失败 keyword={} city={}：{}", searchKeyword, city, e.getMessage());
                         return Flux.just(StreamEvent.error(
-                                city + "的天气数据拿到了，但小岛民整理时走神了，稍后再问一次～"));
+                                city + "的住宿数据拿到了，但小岛民整理时走神了，稍后再问一次～"));
                     });
         });
     }
 
-    /** 从识别槽位里取第一个城市；没有则为 null */
+    /** 从槽位取关键词；没有则为 null */
+    private String firstKeyword(Map<String, Object> slots) {
+        if (slots == null || slots.get("keyword") == null) {
+            return null;
+        }
+        return String.valueOf(slots.get("keyword"));
+    }
+
+    /** 从槽位取第一个城市；没有则为 null */
     private String firstCity(Map<String, Object> slots) {
         if (slots == null || !slots.containsKey("cities")) {
             return null;

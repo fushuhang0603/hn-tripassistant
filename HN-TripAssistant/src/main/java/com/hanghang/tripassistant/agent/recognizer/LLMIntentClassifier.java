@@ -41,6 +41,8 @@ public class LLMIntentClassifier {
             - cities：海南城市，数组，如["三亚"]
             - travelDate：日期，格式 YYYY-MM-DD
             - keyword：查询核心词
+            - from：交通起点（城市或地点），如"海口"
+            - to：交通终点，如"三亚"
 
             只输出 JSON，不要任何解释或 Markdown：
             """;

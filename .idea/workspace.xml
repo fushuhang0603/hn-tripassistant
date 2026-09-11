@@ -5,7 +5,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="305dcdad-0253-4625-974b-9d9a5df1226e" name="更改" comment="添加多轮对话">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/IntentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/IntentHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/WeatherHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/handler/impl/WeatherHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/recognizer/LLMIntentClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/recognizer/LLMIntentClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/agent/request/ChatResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/ChatService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HN-TripAssistant/src/main/java/com/hanghang/tripassistant/service/impl/ChatServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/TripAssistantApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/ChatMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/ChatSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/MessageRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/RedisSessionStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/SessionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/SessionPhase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/context/SessionStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/graph/node/ExtractParamNode$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/graph/node/ExtractParamNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/graph/state/ExtractParamState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/HandlerRegistry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/HandlerResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/IntentHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/impl/GeneralHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/handler/impl/WeatherHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult$Source.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/intent/IntentType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/DefaultIntentRecognizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRecognizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine$IntentRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/IntentRuleEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/LLMIntentClassifier$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/LLMIntentClassifier$ClassificationResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/recognizer/LLMIntentClassifier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/ChatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/ChatRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/ChatResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/agent/request/StreamEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/common/BusinessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/common/Constant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/common/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/common/UserBasicInfo$UserBasicInfoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/common/UserBasicInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/dto/LoginDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/dto/RegisterDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/entity/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/vo/LoginVO$LoginVOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/vo/LoginVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/domain/vo/UserInfoVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/handler/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/handler/LoginInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/utils/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/business/utils/UserContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/AiConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/GraphConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/config/WebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/controller/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/ChatService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/GaoDeMapMcpService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/ChatServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/GaoDeMapMcpServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/com/hanghang/tripassistant/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/gaode-mcp-server.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/classes/mapper/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HN-TripAssistant/target/test-classes/com/hanghang/tripassistant/TripAssistantApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +264,7 @@
       <workItem from="1788849377037" duration="8660000" />
       <workItem from="1788873521979" duration="2115000" />
       <workItem from="1788939255128" duration="18315000" />
-      <workItem from="1789022690926" duration="7649000" />
+      <workItem from="1789022690926" duration="20998000" />
     </task>
     <task id="LOCAL-00001" summary="补全用户登录逻辑">
       <option name="closed" value="true" />
@@ -235,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789033331507</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加多轮对话">
+      <option name="closed" value="true" />
+      <created>1789034151594</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1789034151594</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
