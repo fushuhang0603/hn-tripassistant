@@ -35,6 +35,9 @@ public class ChatContext {
     @Schema(description = "历史槽位快照，参数合并后的结果")
     private Map<String, Object> extractParam;
 
+    @Schema(description = "已定稿的行程快照，来自 Redis 业务快照，调整行程时回填")
+    private Object tripPlan;
+
     @Schema(description = "消息历史，时间正序（旧 → 新）")
     private List<ChatMessage> history;
 }

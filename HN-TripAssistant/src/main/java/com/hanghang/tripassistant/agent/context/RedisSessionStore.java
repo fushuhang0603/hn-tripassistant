@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map;
 
 /**
  * Redis 会话存储：快照 String(JSON) + 历史 List，TTL 24h，活跃会话读写刷新。
@@ -22,6 +24,10 @@ public class RedisSessionStore implements SessionStore {
     private static final String SESSION_KEY_PREFIX = "chat:session:";
     /** 历史 key 前缀：chat:history:{sessionId} */
     private static final String HISTORY_KEY_PREFIX = "chat:history:";
+    /** 图状态 key 前缀：chat:graph:{sessionId}（行程规划人机协作断点） */
+    private static final String GRAPH_KEY_PREFIX = "chat:graph:";
+    /** 图状态 key 前缀：chat:graph:{sessionId}（行程规划人机协作断点） */
+    private static final String GRAPH_KEY_PREFIX = "chat:graph:";
     /** 会话数据存活时长：24h，每次读写刷新 */
     private static final Duration TTL = Duration.ofHours(24);
     /** 消息历史保留条数上限 */
@@ -94,7 +100,32 @@ public class RedisSessionStore implements SessionStore {
 
     @Override
     public void delete(String sessionId) {
-        redisTemplate.delete(List.of(sessionKey(sessionId), historyKey(sessionId)));
+        redisTemplate.delete(List.of(sessionKey(sessionId), historyKey(sessionId), graphKey(sessionId)));
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> loadGraphState(String sessionId) {
+        String json = redisTemplate.opsForValue().get(graphKey(sessionId));
+        if (json == null) {
+            return null;
+        }
+        try {
+            return objectMapper.readValue(json, Map.class);
+        } catch (JsonProcessingException e) {
+            log.error("[会话] 图状态反序列化失败 sessionId={}：{}", sessionId, e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public void saveGraphState(String sessionId, Map<String, Object> state) {
+        try {
+            String json = objectMapper.writeValueAsString(state);
+            redisTemplate.opsForValue().set(graphKey(sessionId), json, TTL);
+        } catch (JsonProcessingException e) {
+            log.error("[会话] 图状态序列化失败 sessionId={}：{}", sessionId, e.getMessage());
+        }
     }
 
     private String sessionKey(String sessionId) {
@@ -103,5 +134,9 @@ public class RedisSessionStore implements SessionStore {
 
     private String historyKey(String sessionId) {
         return HISTORY_KEY_PREFIX + sessionId;
+    }
+
+    private String graphKey(String sessionId) {
+        return GRAPH_KEY_PREFIX + sessionId;
     }
 }

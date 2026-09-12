@@ -65,8 +65,8 @@ public class ChatServiceImpl implements ChatService {
                     StreamEvent.token("好的，已帮你取消～还有什么想聊的，随时找小岛民～"));
         }
 
-        // 4. 追问态回退：COLLECTING 阶段用户回答追问时，沿用快照原意图
-        resolveCollectingIntent(context);
+        // 4. 回退路由：COLLECTING（缺参追问）/ PLAN_DONE（行程调整）阶段用户回答时，沿用快照原意图
+        resolveFallbackIntent(context);
 
         // 5. 槽位合并：历史快照 + 本轮提取，新值覆盖、null 不覆盖
         Map<String, Object> mergedSlots = sessionManager.mergeSlots(context.getExtractParam(), intentResult.getSlots());
@@ -77,19 +77,22 @@ public class ChatServiceImpl implements ChatService {
         IntentHandler handler = handlerRegistry.dispatch(intentResult.getIntent());
         StreamEvent meta = StreamEvent.meta(sessionId, handler.support().name());
 
-        // 7. 流结束保存：边推边收集 token 拼完整回复、ask 事件记追问，流结束统一落库
+        // 7. 流结束保存：边推边收集 token 拼完整回复、ask 事件记追问、end 事件记结构化数据，流结束统一落库
         StringBuilder replyBuf = new StringBuilder();
         AtomicReference<String> askRef = new AtomicReference<>();
+        AtomicReference<Object> dataRef = new AtomicReference<>();
         return Flux.concat(Flux.just(meta), handler.handleStream(context))
                 .doOnNext(event -> {
                     if ("token".equals(event.getType()) && event.getContent() != null) {
                         replyBuf.append(event.getContent());
                     } else if ("ask".equals(event.getType())) {
                         askRef.set(event.getAskMessage());
+                    } else if ("end".equals(event.getType()) && event.getData() != null) {
+                        dataRef.set(event.getData());
                     }
                 })
-                .doOnComplete(() -> saveStream(context, replyBuf.toString(), askRef.get()))
-                .doOnError(e -> saveStream(context, replyBuf.toString(), askRef.get()));
+                .doOnComplete(() -> saveStream(context, replyBuf.toString(), askRef.get(), dataRef.get()))
+                .doOnError(e -> saveStream(context, replyBuf.toString(), askRef.get(), dataRef.get()));
     }
 
     /** 会话ID：前端带回优先，否则新建 */
@@ -99,23 +102,26 @@ public class ChatServiceImpl implements ChatService {
                 : UUID.randomUUID().toString().replace("-", "");
     }
 
-    /** 追问态回退：phase=COLLECTING 且本轮识别 GENERAL（非取消）时，沿用快照原意图继续追问流程 */
-    private void resolveCollectingIntent(ChatContext context) {
+    /** 回退路由：COLLECTING（缺参追问）或 PLAN_DONE（行程调整）阶段识别为 GENERAL 时，回退快照原意图 */
+    private void resolveFallbackIntent(ChatContext context) {
         IntentResult intentResult = context.getIntentResult();
-        if (context.getPhase() == SessionPhase.COLLECTING
+        boolean waitingPhase = context.getPhase() == SessionPhase.COLLECTING
+                || context.getPhase() == SessionPhase.PLAN_DONE;
+        if (waitingPhase
                 && intentResult.getIntent() == IntentType.GENERAL
                 && context.getIntent() != null) {
-            log.info("[追问回退] 会话处于 COLLECTING，识别 GENERAL，回退原意图={}", context.getIntent());
+            log.info("[回退路由] 会话处于 {}，识别 GENERAL，回退原意图={}", context.getPhase(), context.getIntent());
             intentResult.setIntent(context.getIntent());
         }
     }
 
-    /** 流式结束统一保存：拼接 token 为完整回复，ask 文案还原追问态 */
-    private void saveStream(ChatContext context, String reply, String askMessage) {
+    /** 流式结束统一保存：拼接 token 为完整回复，ask 文案还原追问态，end 数据落行程快照 */
+    private void saveStream(ChatContext context, String reply, String askMessage, Object data) {
         HandlerResult result = new HandlerResult();
         result.setReply(reply);
         result.setAskMessage(askMessage);
         result.setComplete(true);
+        result.setData(data);
         sessionManager.save(context, result);
     }
 }

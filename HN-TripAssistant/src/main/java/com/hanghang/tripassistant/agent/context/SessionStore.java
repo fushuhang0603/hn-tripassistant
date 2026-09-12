@@ -32,4 +32,14 @@ public interface SessionStore {
      * 删除会话快照与消息历史（取消语义使用）。
      */
     void delete(String sessionId);
+
+    /**
+     * 读取行程规划图状态（OverAllState 的 data Map）；不存在或出错返回 null。
+     */
+    java.util.Map<String, Object> loadGraphState(String sessionId);
+
+    /**
+     * 写回行程规划图状态并刷新 TTL（人机协作断点恢复）。
+     */
+    void saveGraphState(String sessionId, java.util.Map<String, Object> state);
 }

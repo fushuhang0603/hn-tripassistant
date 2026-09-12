@@ -1,6 +1,7 @@
 package com.hanghang.tripassistant.agent.context;
 
 import com.hanghang.tripassistant.agent.handler.HandlerResult;
+import com.hanghang.tripassistant.agent.intent.IntentType;
 import com.hanghang.tripassistant.agent.request.ChatContext;
 import com.hanghang.tripassistant.business.common.UserBasicInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +51,7 @@ public class SessionManager {
                 if (session.getExtractParam() != null) {
                     context.setExtractParam(session.getExtractParam());
                 }
+                context.setTripPlan(session.getTripPlan());
                 context.setHistory(sessionStore.recentMessages(sessionId, HISTORY_WINDOW));
             }
         } catch (Exception e) {
@@ -78,7 +80,11 @@ public class SessionManager {
 
     /**
      * 保存会话：phase 迁移 + 写快照 + 追加本轮消息。
-     * phase 规则：Handler 返回追问文案 → COLLECTING（记原意图供下轮回退）；否则回 IDLE。
+     * phase 规则：
+     * - 追问文案 → COLLECTING（记原意图供下轮回退）
+     * - 行程定稿（TRIP_PLANNING 且带 data）→ PLAN_DONE（tripPlan 落快照，记意图供调整回退）
+     * - 已是 PLAN_DONE 且本轮非行程定稿（插问）→ 保持 PLAN_DONE（旧行程不丢）
+     * - 其余 → IDLE
      */
     public void save(ChatContext context, HandlerResult result) {
         try {
@@ -87,9 +93,18 @@ public class SessionManager {
             session.setUserId(context.getUser() == null ? null : context.getUser().getId());
             session.setExtractParam(context.getExtractParam());
             session.setUpdateTime(LocalDateTime.now());
+            IntentType currentIntent = context.getIntentResult() == null ? null : context.getIntentResult().getIntent();
             if (StringUtils.hasText(result.getAskMessage())) {
                 session.setPhase(SessionPhase.COLLECTING);
-                session.setIntent(context.getIntentResult() == null ? null : context.getIntentResult().getIntent());
+                session.setIntent(currentIntent);
+            } else if (currentIntent == IntentType.TRIP_PLANNING && result.getData() != null) {
+                session.setPhase(SessionPhase.PLAN_DONE);
+                session.setIntent(IntentType.TRIP_PLANNING);
+                session.setTripPlan(result.getData());
+            } else if (context.getPhase() == SessionPhase.PLAN_DONE) {
+                session.setPhase(SessionPhase.PLAN_DONE);
+                session.setIntent(IntentType.TRIP_PLANNING);
+                session.setTripPlan(context.getTripPlan());
             } else {
                 session.setPhase(SessionPhase.IDLE);
             }
