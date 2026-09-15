@@ -26,8 +26,6 @@ public class RedisSessionStore implements SessionStore {
     private static final String HISTORY_KEY_PREFIX = "chat:history:";
     /** 图状态 key 前缀：chat:graph:{sessionId}（行程规划人机协作断点） */
     private static final String GRAPH_KEY_PREFIX = "chat:graph:";
-    /** 图状态 key 前缀：chat:graph:{sessionId}（行程规划人机协作断点） */
-    private static final String GRAPH_KEY_PREFIX = "chat:graph:";
     /** 会话数据存活时长：24h，每次读写刷新 */
     private static final Duration TTL = Duration.ofHours(24);
     /** 消息历史保留条数上限 */
