@@ -61,12 +61,14 @@ function GuidePublishPage() {
         tags: values.tags ?? [],
         content: values.content,
         images: imageUrls,
+        // 后端未对 source 兜底，手动发布需显式标记 USER，避免入库为 null
+        source: 'USER',
       }
 
       const res = await post<ApiResponse<number>>('/api/guide/publish', params)
       if (res.code === 200) {
         message.success('攻略发布成功')
-        navigate(`/square/detail/${res.data}`)
+        navigate(`/square?detail=${res.data}`)
       } else {
         message.error(res.message || '发布失败')
       }

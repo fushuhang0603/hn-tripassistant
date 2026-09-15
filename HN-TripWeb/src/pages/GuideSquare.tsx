@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { App, Avatar, Carousel, Dropdown, Empty, Input, Spin } from 'antd'
 import type { MenuProps } from 'antd'
 import {
@@ -12,6 +12,7 @@ import {
 } from '@ant-design/icons'
 import { post } from '../lib/request'
 import type { ApiResponse, GuideCard, GuidePageQuery, PageResult } from '../types/api'
+import GuideDetailModal from './GuideDetail'
 import './GuideSquare.css'
 
 const img = (prompt: string, size = 'landscape_16_9') =>
@@ -89,11 +90,13 @@ interface GuideSquareProps {
 function GuideSquare({ onLogout }: GuideSquareProps) {
   const { message } = App.useApp()
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [activeMenu, setActiveMenu] = useState('recommend')
   const [sort, setSort] = useState<'new' | 'hot'>('new')
   const [keyword, setKeyword] = useState('')
   const [guides, setGuides] = useState<GuideCard[]>([])
   const [loading, setLoading] = useState(false)
+  const [detailId, setDetailId] = useState<string | null>(() => searchParams.get('detail'))
 
   const loadList = async (menu: string, kw: string, s: 'new' | 'hot') => {
     setLoading(true)
@@ -124,6 +127,16 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
   }, [activeMenu, sort])
 
   const onSearch = () => loadList(activeMenu, keyword, sort)
+
+  const openDetail = (gid: string) => {
+    setDetailId(gid)
+    setSearchParams({ detail: gid }, { replace: true })
+  }
+
+  const closeDetail = () => {
+    setDetailId(null)
+    setSearchParams({}, { replace: true })
+  }
 
   const handlePublishMenu: MenuProps['onClick'] = ({ key }) => {
     if (key === 'pub-photo') navigate('/square/publish')
@@ -275,7 +288,7 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
                       key={g.id}
                       className="gs-card"
                       style={{ cursor: 'pointer' }}
-                      onClick={() => navigate(`/square/detail/${g.id}`)}
+                      onClick={() => openDetail(g.id)}
                     >
                       <div className="gs-card-cover">
                         <img src={g.cover || fallbackCover} alt={g.title} loading="lazy" />
@@ -344,6 +357,8 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
           </div>
         </main>
       </div>
+
+      {detailId && <GuideDetailModal id={detailId} onClose={closeDetail} />}
     </div>
   )
 }

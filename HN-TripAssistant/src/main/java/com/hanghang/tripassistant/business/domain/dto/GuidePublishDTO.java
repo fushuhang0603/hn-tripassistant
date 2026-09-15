@@ -14,7 +14,7 @@ public class GuidePublishDTO {
 
     @Schema(description = "封面图URL，为空时使用默认图")
     private String cover;
-
+    
     @Schema(description = "城市")
     private String city;
 

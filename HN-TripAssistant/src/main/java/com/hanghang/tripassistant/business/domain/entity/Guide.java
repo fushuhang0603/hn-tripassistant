@@ -51,7 +51,7 @@ public class Guide {
     @Schema(description = "点赞数")
     private Integer likes;
 
-    @Schema(description = "状态：1=已发布 0=下架")
+    @Schema(description = "状态：1=已发布 0=下架 2=待发布" )
     private Integer status;
 
     @Schema(description = "创建时间")

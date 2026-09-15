@@ -52,9 +52,12 @@ public class GuideServiceImpl implements GuideService {
         }
 
         Guide guide = BeanUtil.copyProperties(dto, Guide.class);
+        guide.setUserId(UserContext.getUserId());
         guide.setTags(joinTags(dto.getTags()));
         guide.setCreateTime(LocalDateTime.now());
         guide.setUpdateTime(LocalDateTime.now());
+        guide.setLikes(0);
+        guide.setStatus(1);
         guide.setAuthorName(StrUtil.blankToDefault(UserContext.getUsername(), ""));
 
         // 封面兜底：cover 为空时取图集第一张
