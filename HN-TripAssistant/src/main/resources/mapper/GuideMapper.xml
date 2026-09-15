@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hanghang.tripassistant.mapper.GuideMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into guide (user_id, author_name, title, cover, city, days, budget, tags, content,
+                           source, trip_plan, likes, status, create_time, update_time)
+        values (#{userId}, #{authorName}, #{title}, #{cover}, #{city}, #{days}, #{budget}, #{tags}, #{content},
+                #{source}, #{tripPlan}, #{likes}, #{status}, #{createTime}, #{updateTime})
+    </insert>
+
+    <select id="pageSelect" resultType="com.hanghang.tripassistant.business.domain.entity.Guide">
+        select g.id, g.user_id, g.author_name, g.title, g.cover, g.city, g.days, g.budget, g.tags,
+        g.content, g.source, g.trip_plan, g.likes, g.status, g.create_time, g.update_time
+        from guide g
+        where g.status = 1
+        <if test="city != null and city != ''">
+            and g.city = #{city}
+        </if>
+        <if test="tag != null and tag != ''">
+            and find_in_set(#{tag}, g.tags)
+        </if>
+        <if test="keyword != null and keyword != ''">
+            and (g.title like concat('%', #{keyword}, '%')
+            or g.tags like concat('%', #{keyword}, '%')
+            or g.content like concat('%', #{keyword}, '%'))
+        </if>
+        order by g.create_time desc, g.id desc
+    </select>
+
+    <select id="selectById" resultType="com.hanghang.tripassistant.business.domain.entity.Guide">
+        select g.id, g.user_id, g.author_name, g.title, g.cover, g.city, g.days, g.budget, g.tags,
+        g.content, g.source, g.trip_plan, g.likes, g.status, g.create_time, g.update_time
+        from guide g
+        where g.id = #{id}
+    </select>
+
+</mapper>

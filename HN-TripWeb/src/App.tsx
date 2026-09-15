@@ -4,6 +4,8 @@ import LoginPage from './pages/LoginPage'
 import MainLayout from './pages/MainLayout'
 import HomePage from './pages/HomePage'
 import GuideSquare from './pages/GuideSquare'
+import GuideDetail from './pages/GuideDetail'
+import GuidePublish from './pages/GuidePublish'
 import AmapMcpTest from './pages/AmapMcpTest'
 
 function App() {
@@ -50,6 +52,16 @@ function App() {
               <Navigate to="/login" replace />
             )
           }
+        />
+
+        <Route
+          path="/square/detail/:id"
+          element={authed ? <GuideDetail /> : <Navigate to="/login" replace />}
+        />
+
+        <Route
+          path="/square/publish"
+          element={authed ? <GuidePublish /> : <Navigate to="/login" replace />}
         />
 
         <Route path="/amap-test" element={<AmapMcpTest />} />

@@ -31,9 +31,21 @@ spring:
       database: 0
       timeout: 5000ms
       connect-timeout: 5000ms
+  #设置上传文件大小
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 50MB
 jwt:
   secret: hainan-trip-jwt-secret-key-please-change-me-2026
   expire-hours: 4
+
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-key-id: ${access-key-id}
+    access-key-secret: ${access-key-secret}
+    bucket: hanghang-hn-trip
 
 mybatis:
   mapper-locations: classpath*:mapper/**/*.xml

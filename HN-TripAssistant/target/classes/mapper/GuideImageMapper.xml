@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hanghang.tripassistant.mapper.GuideImageMapper">
+
+    <insert id="insertBatch">
+        insert into guide_image (guide_id, url, sort, create_time)
+        values
+        <foreach collection="guideImages" item="img" separator=",">
+            (#{img.guideId}, #{img.url}, #{img.sort}, #{img.createTime})
+        </foreach>
+    </insert>
+
+    <select id="selectUrlsByGuideId" resultType="java.lang.String">
+        select url
+        from guide_image
+        where guide_id = #{guideId}
+        order by sort asc
+    </select>
+
+</mapper>

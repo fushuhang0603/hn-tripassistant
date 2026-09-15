@@ -108,3 +108,33 @@ export async function postStream(
     }
   }
 }
+
+// 图片上传：multipart/form-data（后端 /api/upload/images 接收 files 数组，最多 9 张）
+export async function uploadImages(files: File[]): Promise<string[]> {
+  const token = localStorage.getItem(TOKEN_KEY)
+  const formData = new FormData()
+  files.forEach((file) => formData.append('files', file))
+
+  const response = await fetch('/api/upload/images', {
+    method: 'POST',
+    // FormData 由浏览器自动设置 Content-Type（含 boundary），这里只带鉴权头
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: formData,
+  })
+
+  if (response.status === 401) {
+    localStorage.removeItem(TOKEN_KEY)
+    window.location.replace('/login')
+    throw new Error('登录已过期，请重新登录')
+  }
+
+  if (!response.ok) {
+    throw new Error(`请求失败：${response.status}`)
+  }
+
+  const res = (await response.json()) as { code: number; message: string; data: string[] }
+  if (res.code !== 200) {
+    throw new Error(res.message || '上传失败')
+  }
+  return res.data
+}

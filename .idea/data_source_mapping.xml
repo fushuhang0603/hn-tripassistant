@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/HN-TripAssistant/src/main/resources/mapper/GuideImageMapper.xml" value="680f97a9-ac95-4bdc-b7b5-bfdd801174c8" />
+    <file url="file://$PROJECT_DIR$/HN-TripAssistant/src/main/resources/mapper/GuideMapper.xml" value="680f97a9-ac95-4bdc-b7b5-bfdd801174c8" />
+  </component>
+</project>

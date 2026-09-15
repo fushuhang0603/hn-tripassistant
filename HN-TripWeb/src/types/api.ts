@@ -118,4 +118,59 @@ export interface PlanTripAsk {
 // /graph/planTrip 返回：追问 或 完整行程
 export type PlanTripResult = PlanTripAsk | TripPlan
 
+// ===== 攻略广场（对齐后端 business.domain） =====
+
+// 攻略卡片（对应 GuideCardVO，id 由后端序列化为字符串）
+export interface GuideCard {
+  id: string
+  title: string
+  cover: string
+  city: string
+  days: string
+  budget: string
+  tags: string[]
+  authorName: string
+  likes: number
+  source: string
+  createTime: string
+}
+
+// 攻略详情（对应 GuideDetailVO）
+export interface GuideDetail extends GuideCard {
+  content: string
+  images: string[]
+  liked: boolean
+  tripPlan: unknown
+}
+
+// 攻略分页查询参数（对应 GuidePageQueryDTO）
+export interface GuidePageQuery {
+  city?: string
+  tag?: string
+  keyword?: string
+  sort?: 'hot' | 'new'
+  page?: number
+  size?: number
+}
+
+// 发布攻略参数（对应 GuidePublishDTO）
+export interface GuidePublishParams {
+  title: string
+  cover?: string
+  city: string
+  days: string
+  budget: string
+  tags: string[]
+  content: string
+  images: string[]
+  source?: string
+  tripPlan?: unknown
+}
+
+// 通用分页返回（对应 PageResult）
+export interface PageResult<T> {
+  records: T[]
+  total: number
+}
+
 

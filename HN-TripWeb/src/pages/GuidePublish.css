@@ -1,0 +1,60 @@
+/* ===== 发布攻略 · 白底 + 薄荷绿 + 浅蓝海岛风 ===== */
+.gp-page {
+  min-height: 100vh;
+  background: #f7fafb;
+  color: #2d3a3f;
+}
+
+.gp-topbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #eef2f5;
+  box-shadow: 0 2px 10px rgba(45, 58, 63, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.gp-topbar-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3a3f;
+}
+
+.gp-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(45, 58, 63, 0.05);
+}
+
+.gp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.gp-row-item {
+  margin-bottom: 0;
+}
+
+.gp-upload-text {
+  margin-top: 8px;
+  color: #8a9aa0;
+  font-size: 12px;
+}
+
+.gp-submit {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}

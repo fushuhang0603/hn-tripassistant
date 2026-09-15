@@ -1,29 +1,18 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { App, Avatar, Carousel, Dropdown, Input } from 'antd'
+import { App, Avatar, Carousel, Dropdown, Empty, Input, Spin } from 'antd'
 import type { MenuProps } from 'antd'
 import {
   CompassOutlined,
   DownOutlined,
   FireOutlined,
-  HeartFilled,
   HeartOutlined,
   PlusOutlined,
   SearchOutlined,
 } from '@ant-design/icons'
+import { post } from '../lib/request'
+import type { ApiResponse, GuideCard, GuidePageQuery, PageResult } from '../types/api'
 import './GuideSquare.css'
-
-interface Guide {
-  id: number
-  title: string
-  cover: string
-  city: string
-  days: string
-  budget: string
-  tags: string[]
-  author: string
-  likes: number
-}
 
 const img = (prompt: string, size = 'landscape_16_9') =>
   `https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent(
@@ -34,6 +23,8 @@ const penguin = img(
   'cute cartoon penguin wearing sunglasses standing on tropical beach with coconut palm tree, 2D flat vector illustration, mint green and light blue color palette, clean white background, kawaii minimal',
   'square',
 )
+
+const fallbackCover = img('Hainan tropical island beach coconut palm turquoise sea aerial view')
 
 const banners = [
   {
@@ -56,6 +47,9 @@ const banners = [
   },
 ]
 
+// 侧边栏前 4 项为城市，其余为标签，用于区分查询参数
+const CITY_KEYS = new Set(['三亚', '万宁', '海口', '琼海'])
+
 const sideMenu = [
   { key: 'recommend', label: '推荐攻略' },
   { key: '三亚', label: '三亚' },
@@ -65,119 +59,6 @@ const sideMenu = [
   { key: '亲子游', label: '亲子游' },
   { key: '海边度假', label: '海边度假' },
   { key: '美食探店', label: '美食探店' },
-]
-
-const guides: Guide[] = [
-  {
-    id: 1,
-    title: '三亚4天3晚亲子游，带娃不累还出片',
-    cover: img('Sanya Yalong Bay tropical beach turquoise sea coconut palms family travel'),
-    city: '三亚',
-    days: '4天3晚',
-    budget: '¥8000',
-    tags: ['亲子游', '海边度假'],
-    author: '椰子妈妈',
-    likes: 2341,
-  },
-  {
-    id: 2,
-    title: '海口骑楼老街一日漫游，南洋风情',
-    cover: img('Haikou Qilou old street Nanyang style arcade buildings street food'),
-    city: '海口',
-    days: '2天1晚',
-    budget: '¥1500',
-    tags: ['美食探店', '人文'],
-    author: '岛民阿东',
-    likes: 1876,
-  },
-  {
-    id: 3,
-    title: '万宁冲浪新手入坑，石梅湾vs日月湾',
-    cover: img('Wanning Shimei Bay surfing beach waves coconut road surfboard sunrise'),
-    city: '万宁',
-    days: '3天2晚',
-    budget: '¥3500',
-    tags: ['海边度假', '运动'],
-    author: '浪里小白',
-    likes: 2105,
-  },
-  {
-    id: 4,
-    title: '陵水分界洲岛潜水体验，第一次下海',
-    cover: img('Lingshui Fenjiezhou Island glass sea diving underwater coral reef'),
-    city: '陵水',
-    days: '3天2晚',
-    budget: '¥4000',
-    tags: ['海边度假', '潜水'],
-    author: '深海摄影师',
-    likes: 1560,
-  },
-  {
-    id: 5,
-    title: '儋州千年古盐田 + 东坡书院人文慢旅',
-    cover: img('Danzhou thousand year ancient salt field Dongpo academy historic culture'),
-    city: '儋州',
-    days: '2天1晚',
-    budget: '¥1200',
-    tags: ['人文', '亲子游'],
-    author: '人文旅者',
-    likes: 890,
-  },
-  {
-    id: 6,
-    title: '琼海博鳌深度游，除了会址还有什么',
-    cover: img('Qionghai Boao seaside town Yudai beach fishing village laid-back'),
-    city: '琼海',
-    days: '2天1晚',
-    budget: '¥1800',
-    tags: ['海边度假', '美食探店'],
-    author: '博鳌原住民',
-    likes: 1120,
-  },
-  {
-    id: 7,
-    title: '三亚蜜月5日浪漫路线，不踩雷',
-    cover: img('Hainan honeymoon romantic sunset beach couple luxury resort seaview'),
-    city: '三亚',
-    days: '5天4晚',
-    budget: '¥12000',
-    tags: ['海边度假', '蜜月'],
-    author: '蜜月策划师',
-    likes: 2760,
-  },
-  {
-    id: 8,
-    title: '海口周末美食探店，骑楼老街吃透',
-    cover: img('Haikou street food night market local snacks qilou old street delicious'),
-    city: '海口',
-    days: '2天1晚',
-    budget: '¥1000',
-    tags: ['美食探店'],
-    author: '吃货小椰',
-    likes: 1980,
-  },
-  {
-    id: 9,
-    title: '万宁冲浪3天2晚，住进椰林海景房',
-    cover: img('Wanning coconut forest sea view room resort beach sunset relaxation'),
-    city: '万宁',
-    days: '3天2晚',
-    budget: '¥3200',
-    tags: ['海边度假', '亲子游'],
-    author: '椰林民宿主',
-    likes: 1420,
-  },
-  {
-    id: 10,
-    title: '三亚海边度假3日，躺平治愈之旅',
-    cover: img('Sanya beach resort infinity pool coconut tree sunny relaxation holiday'),
-    city: '三亚',
-    days: '3天2晚',
-    budget: '¥6000',
-    tags: ['海边度假', '亲子游'],
-    author: '躺平旅行家',
-    likes: 1690,
-  },
 ]
 
 const hotRoutes = [
@@ -209,24 +90,44 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
   const { message } = App.useApp()
   const navigate = useNavigate()
   const [activeMenu, setActiveMenu] = useState('recommend')
-  const [liked, setLiked] = useState<Set<number>>(new Set())
+  const [sort, setSort] = useState<'new' | 'hot'>('new')
+  const [keyword, setKeyword] = useState('')
+  const [guides, setGuides] = useState<GuideCard[]>([])
+  const [loading, setLoading] = useState(false)
 
-  const filtered = useMemo(() => {
-    if (activeMenu === 'recommend') return guides
-    return guides.filter((g) => g.city === activeMenu || g.tags.includes(activeMenu))
-  }, [activeMenu])
-
-  const toggleLike = (id: number) => {
-    setLiked((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) {
-        next.delete(id)
-      } else {
-        next.add(id)
-        message.success('已点赞')
+  const loadList = async (menu: string, kw: string, s: 'new' | 'hot') => {
+    setLoading(true)
+    try {
+      const params: GuidePageQuery = { page: 1, size: 20, sort: s }
+      if (menu !== 'recommend') {
+        if (CITY_KEYS.has(menu)) params.city = menu
+        else params.tag = menu
       }
-      return next
-    })
+      if (kw.trim()) params.keyword = kw.trim()
+
+      const res = await post<ApiResponse<PageResult<GuideCard>>>('/api/guide/page', params)
+      if (res.code === 200) {
+        setGuides(res.data.records)
+      } else {
+        message.error(res.message || '加载失败')
+      }
+    } catch {
+      message.error('加载攻略失败')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadList(activeMenu, keyword, sort)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeMenu, sort])
+
+  const onSearch = () => loadList(activeMenu, keyword, sort)
+
+  const handlePublishMenu: MenuProps['onClick'] = ({ key }) => {
+    if (key === 'pub-photo') navigate('/square/publish')
+    else message.info('视频攻略开发中')
   }
 
   const todo = () => message.info('功能开发中，敬请期待')
@@ -265,7 +166,7 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
               我的行程 <DownOutlined className="gs-nav-arrow" />
             </a>
           </Dropdown>
-          <Dropdown menu={{ items: publishMenu, onClick: todo }} placement="bottom">
+          <Dropdown menu={{ items: publishMenu, onClick: handlePublishMenu }} placement="bottom">
             <a className="gs-nav-item">
               发布攻略 <DownOutlined className="gs-nav-arrow" />
             </a>
@@ -278,6 +179,9 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
             prefix={<SearchOutlined />}
             placeholder="搜索攻略"
             allowClear
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            onPressEnter={onSearch}
           />
           <Dropdown menu={{ items: userMenu }} placement="bottomRight">
             <div className="gs-user-info">
@@ -338,38 +242,74 @@ function GuideSquare({ onLogout }: GuideSquareProps) {
           <div className="gs-content-grid">
             {/* 左侧瀑布流 */}
             <section className="gs-waterfall-wrap">
-              <h2 className="gs-section-title">攻略卡片瀑布流</h2>
-              <div className="gs-waterfall">
-                {filtered.map((g) => (
-                  <article key={g.id} className="gs-card">
-                    <div className="gs-card-cover">
-                      <img src={g.cover} alt={g.title} loading="lazy" />
-                    </div>
-                    <div className="gs-card-body">
-                      <div className="gs-card-tags">
-                        <span className="gs-tag gs-tag-city">{g.city}</span>
-                        <span className="gs-tag">{g.days}</span>
-                        <span className="gs-tag">{g.budget}</span>
-                      </div>
-                      <h3 className="gs-card-title">{g.title}</h3>
-                      <div className="gs-card-footer">
-                        <div className="gs-card-author">
-                          <span className="gs-card-avatar">{g.author.slice(0, 1)}</span>
-                          <span className="gs-card-author-name">{g.author}</span>
-                        </div>
-                        <button
-                          type="button"
-                          className={`gs-like ${liked.has(g.id) ? 'gs-liked' : ''}`}
-                          onClick={() => toggleLike(g.id)}
-                        >
-                          {liked.has(g.id) ? <HeartFilled /> : <HeartOutlined />}{' '}
-                          {formatCount(g.likes + (liked.has(g.id) ? 1 : 0))}
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+              <div className="gs-waterfall-head">
+                <h2 className="gs-section-title">攻略卡片瀑布流</h2>
+                <div className="gs-sort">
+                  <button
+                    type="button"
+                    className={`gs-sort-btn ${sort === 'new' ? 'gs-sort-active' : ''}`}
+                    onClick={() => setSort('new')}
+                  >
+                    最新
+                  </button>
+                  <button
+                    type="button"
+                    className={`gs-sort-btn ${sort === 'hot' ? 'gs-sort-active' : ''}`}
+                    onClick={() => setSort('hot')}
+                  >
+                    最热
+                  </button>
+                </div>
               </div>
+
+              {loading ? (
+                <div className="gs-loading">
+                  <Spin />
+                </div>
+              ) : guides.length === 0 ? (
+                <Empty description="暂无攻略" style={{ marginTop: 60 }} />
+              ) : (
+                <div className="gs-waterfall">
+                  {guides.map((g) => (
+                    <article
+                      key={g.id}
+                      className="gs-card"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => navigate(`/square/detail/${g.id}`)}
+                    >
+                      <div className="gs-card-cover">
+                        <img src={g.cover || fallbackCover} alt={g.title} loading="lazy" />
+                      </div>
+                      <div className="gs-card-body">
+                        <div className="gs-card-tags">
+                          <span className="gs-tag gs-tag-city">{g.city}</span>
+                          <span className="gs-tag">{g.days}</span>
+                          <span className="gs-tag">{g.budget}</span>
+                        </div>
+                        <h3 className="gs-card-title">{g.title}</h3>
+                        <div className="gs-card-footer">
+                          <div className="gs-card-author">
+                            <span className="gs-card-avatar">
+                              {g.authorName?.slice(0, 1) || '旅'}
+                            </span>
+                            <span className="gs-card-author-name">{g.authorName}</span>
+                          </div>
+                          <button
+                            type="button"
+                            className="gs-like"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              message.info('点赞功能开发中')
+                            }}
+                          >
+                            <HeartOutlined /> {formatCount(g.likes)}
+                          </button>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
             </section>
 
             {/* 右侧热门路线 */}
